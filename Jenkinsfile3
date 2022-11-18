@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    parameters{ 
+    string(name: 'var1', defaultValue: '123' , description: '', trim: true)
+    }
+
+    stages {
+        stage('Sample') {
+            steps {
+                script{
+                    echo "Test"
+                    env.var1="Test123"
+                    sh './curlREST3.sh'
+                }
+                
+            }
+        }
+        stage ('sample2'){
+            steps{
+                script {
+                      echo env.var1
+                }
+                
+            }
+        }
+    }
+}
