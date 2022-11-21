@@ -1,0 +1,29 @@
+@Library('SNOWTest')
+pipeline {
+    agent any
+    parameters{ 
+    string(name: 'var1', defaultValue: '123' , description: '', trim: true)
+    }
+
+    stages {
+        stage('CreateTicket') {
+            steps {
+                script{
+                    echo "Test"
+                    env.var1="Test123"
+                    SNOWTest("create")
+                }
+                
+            }
+        }
+        stage ('GetTicket'){
+            steps{
+                script {
+                    SNOWTest("get")
+
+                }
+                
+            }
+        }
+    }
+}
