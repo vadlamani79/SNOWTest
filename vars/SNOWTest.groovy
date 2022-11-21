@@ -1,4 +1,4 @@
-def call(string testName){
+def call(String testName){
   
 if ("${testName}" == "create")
      {
